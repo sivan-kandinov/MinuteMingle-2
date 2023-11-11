@@ -1,7 +1,10 @@
 // pages/api/submit-form.js
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb+srv://MinuteMingle:MM@cluster0.kbdxhkp.mongodb.net/MinuteMingle');
+mongoose.connect('mongodb+srv://MinuteMingle:MM@cluster0.kbdxhkp.mongodb.net/MinuteMingle', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const formDataSchema = new mongoose.Schema({
   basicInfo: {
@@ -9,19 +12,19 @@ const formDataSchema = new mongoose.Schema({
     age: Number,
     gender: String,
   },
-  contactInfo:{
+  contactInfo: {
     email: String,
     phoneNumber: String,
   },
-  locationInfo:{
+  locationInfo: {
     isOnCampus: Boolean,
-    residentialArea: String
+    residentialArea: String,
   },
-  academicInfo:{
+  academicInfo: {
     majors: String,
     minors: String,
-    classes: String
-  }
+    classes: String,
+  },
 });
 
 const FormDataModel = mongoose.models.UserInfo || mongoose.model('UserInfo', formDataSchema);
