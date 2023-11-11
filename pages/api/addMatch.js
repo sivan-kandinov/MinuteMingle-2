@@ -6,9 +6,10 @@ export default async (req, res) => {
        const db = client.db("MinuteMingle");
        const info = req.body
        const users = await db
-           .collection("LoginInfo")
-           .insertOne({ _username: info.username, password:info.password})
-
+           .collection("Matches")
+           .insertOne({ sender: info.sender, receiver:info.receiver, 
+            senderContact: info.senderContact, receiverContact:info.receiverContact
+        })
         res.status(200).end();
    } catch (e) {
        console.error(e);
