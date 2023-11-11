@@ -82,4 +82,12 @@ Alternatively, you can deploy using our template by clicking on the Deploy butto
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
 
 
+```
 MONGODB_URI=mongodb+srv://MinuteMingle:MM@cluster0.kbdxhkp.mongodb.net/?retryWrites=true&w=majority
+
+AUTH0_SECRET='ufwui23ion34t3ubgi43f894fn4ifu34nf0923fn32inf23fjkn'
+AUTH0_BASE_URL='http://localhost:3000'
+AUTH0_ISSUER_BASE_URL='https://dev-zscijf15pm8xbixp.us.auth0.com'
+AUTH0_CLIENT_ID='jmAKRDq79MHMS63HfgMQL79tpjSgRhpf'
+AUTH0_CLIENT_SECRET='2d4WTxDSdLQ6fBZx5uEVFkAXiWMqOF4Y5k5fc096jEL-3HuLTEP-z8QEYTJLZypY'
+```
