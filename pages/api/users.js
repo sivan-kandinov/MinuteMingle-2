@@ -6,7 +6,7 @@ export default async (req, res) => {
        const db = client.db("MinuteMingle");
 
        const users = await db
-           .collection("UserApplications")
+           .collection("userinfos")
            .find({})
            .limit(10)
            .toArray();
