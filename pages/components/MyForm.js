@@ -1,5 +1,7 @@
 // components/MyForm.js
 import { useState } from "react";
+import React, { useEffect } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const MyForm = () => {
   const [formData, setFormData] = useState({
@@ -168,6 +170,31 @@ const MyForm = () => {
       }
     }
   };
+
+  const [matches, setMatches] = useState(null);
+  const { user, error, isLoading } = useUser();
+  useEffect(()=>{{
+    fetch(
+      "http://localhost:3000/api/getUserInfo", {
+          method: "POST",
+          body: JSON.stringify({
+              "username" : "lmdevine@umass.edu",
+          }),
+          headers: {
+            "Content-type": "application/json"
+          }
+      }
+  ).then((response) => 
+    response.json())
+  .then((data)=>{
+    console.log(data)
+    setMatches(data)
+  })
+  }})
+  console.log(matches)
+  if(matches != null){
+    window.location.href = "http://localhost:3000/home"
+  }
 
   return (
     <form onSubmit={handleSubmit}>
