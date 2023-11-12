@@ -10,7 +10,7 @@ export default async (req, res) => {
            .find({"academicInfo.classes":{$regex: info.classes}})
            .toArray();
 
-        res.status(200).send(users);
+        res.status(200).json(users);
    } catch (e) {
        console.error(e);
        res.status(400).end();

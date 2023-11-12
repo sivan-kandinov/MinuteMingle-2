@@ -1,20 +1,6 @@
-export default function RightArrow({ person, setPerson, setPicture }) {
-  const maleImages = [
-    "/images/people/male/student1.png",
-    "/images/people/male/student3.png",
-    "/images/people/male/student6.png",
-    "/images/people/male/student7.png",
-    "/images/people/male/student8.png",
-    "/images/people/male/student9.png",
-  ];
-  const femaleImages = [
-    "/images/people/female/student2.png",
-    "/images/people/female/student4.png",
-    "/images/people/female/student5.png",
-    "/images/people/female/student10.png",
-    "/images/people/female/student11.png",
-  ];
+import { maleImages, femaleImages } from "../../data/imagePaths";
 
+export default function RightArrow({ person, setPerson, setPicture }) {
   const swipe = async () => {
     const res = await fetch("/api/randomUser");
     const json = await res.json();
@@ -27,12 +13,14 @@ export default function RightArrow({ person, setPerson, setPicture }) {
     }, 500);
     setTimeout(() => {
       profilePic.style.opacity = 1;
-    }, 1000);
-    console.log(person.basicInfo.gender)
-    if (person.basicInfo.gender == "Male")
-      setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
-    else
-      setPicture(femaleImages[Math.floor(Math.random() * femaleImages.length)]);
+      if (person.basicInfo.gender == "Male")
+        setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
+      else
+        setPicture(
+          femaleImages[Math.floor(Math.random() * femaleImages.length)]
+        );
+    }, 750);
+    console.log(person.basicInfo.gender);
   };
   return (
     <button onClick={() => swipe()}>

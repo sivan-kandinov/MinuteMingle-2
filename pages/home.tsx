@@ -5,6 +5,7 @@ import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import RightArrow from "./components/RightArrow";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { maleImages, femaleImages } from "../data/imagePaths";
 
 type ConnectionStatus = {
   isConnected: boolean;
@@ -49,13 +50,19 @@ export default function Home({
       const json = await res.json();
       setPerson(json);
       setLoading(false);
+      if (person.basicInfo.gender == "Male")
+        setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
+      else
+        setPicture(
+          femaleImages[Math.floor(Math.random() * femaleImages.length)]
+        );
     };
     fetchData();
   }, []);
 
   return (
     <div className="relative w-full h-full">
-      <div className="absolute top-1/2 right-[10%]">
+      <div className="absolute top-1/2 -translate-y-[50%] right-[10%]">
         <RightArrow
           person={person}
           setPerson={setPerson}
@@ -64,19 +71,22 @@ export default function Home({
       </div>
 
       <div className="bg-gray-200">
-        <div className="mx-auto mt-10 w-1/2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-          <img
+        <div className="flex flex-col justify-center mx-auto mt-10 w-1/2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <h5 className="p-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {person && person.basicInfo.firstName}{" "}
+            {person && person.basicInfo.lastName},{" "}
+            {person && person.basicInfo.age}
+          </h5>
+          <Image
             src={picture}
             alt="picture of a person"
             id="profilePic"
-            className="rounded-t-lg transition duration-500 "
+            width={2000}
+            height={2000}
+            className="rounded-t-lg transition duration-500 w-[70%] h-auto p-4 mx-auto"
           />
+
           <div className="p-5">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {person && person.basicInfo.firstName}{" "}
-              {person && person.basicInfo.lastName},{" "}
-              {person && person.basicInfo.age}
-            </h5>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               Major(s): {person && person.academicInfo.majors}
             </p>
@@ -109,7 +119,7 @@ export default function Home({
               href="#"
               className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-center text-black bg-gray-200 rounded-lg hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-400 dark:text-white dark:bg-black dark:hover:bg-gray-500 dark:focus:ring-gray-600"
             >
-              Become Study Buddies with Jeremy!
+              Become Study Buddies with {person && person.basicInfo.firstName}!
             </a>
           </div>
         </div>
