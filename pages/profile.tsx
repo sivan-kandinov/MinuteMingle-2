@@ -1,56 +1,53 @@
-import {
-  Mail,
-  PhoneOutgoing,
-  GraduationCap,
-  BookCopy,
-  Pencil,
-  PencilLine,
-  Pen,
-  PencilRuler,
-  PenSquare,
-  BookOpenText,
-  BookMarked,
-} from "lucide-react";
+"use client";
+
 import Image from "next/image";
+import { Mail, PhoneOutgoing } from "lucide-react";
 import AcademicInformation from "./components/academic";
 import ScrollAreaItem from "./components/scroll";
 import React, { useState, useEffect } from "react";
-
-const getRandomInteger = (n: number) => {
-  return Math.floor(Math.random() * n);
-};
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Profile() {
-  const firstName = "John";
-  const lastName = "Billybob";
-  const age = 20;
-  const gender = "male";
-  const email = "jocelynBot";
-  const phoneNumber = "(123)-456-7890";
-  const onCampus = true;
-  const residentialArea = "Honors College";
-  const majors = ["Computer Science", "Informatics"];
-  const minors = ["Philosophy", "Mathematics"];
-  const classes = [
-    "CS 220",
-    "CS 230",
-    "CS 240",
-    "CS 250",
-    "CS 311",
-    "Phil 100",
-    "Phil 180",
-  ];
-  const year = "Junior";
-  const interests = ["sports", "music", "food"];
-  const bio = "I am a student at UMass Amherst";
+  const { user, error, isLoading } = useUser();
+
   const [matches, setMatches] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [age, setAge] = useState(0);
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [majors, setMajors] = useState([]);
+  const [minors, setMinors] = useState([]);
+  const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    {
+    if (user !== undefined) {
       fetch("http://localhost:3000/api/getMatches", {
         method: "POST",
         body: JSON.stringify({
-          username: email,
+          username: user?.email,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok"); // TODO: Handle this error
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setMatches(data.toString());
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+      fetch("http://localhost:3000/api/getProfile", {
+        method: "POST",
+        body: JSON.stringify({
+          username: user?.email,
         }),
         headers: {
           "Content-type": "application/json",
@@ -58,10 +55,17 @@ export default function Profile() {
       })
         .then((response) => response.json())
         .then((data) => {
-          setMatches(data.toString());
+          setFirstName(data[0].firstName);
+          setLastName(data[0].lastName);
+          setAge(data[0].age);
+          setEmail(data[0].email);
+          setPhoneNumber(data[0].phoneNumber);
+          setMajors(data[0].majors);
+          setMinors(data[0].minors);
+          setClasses(data[0].classes);
         });
     }
-  });
+  }, [user]);
 
   return (
     <main className="p-8 bg-gray-100">
