@@ -1,10 +1,12 @@
 import Image from "next/image";
 import User from "./user";
 import { Home } from "lucide-react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Navbar() {
+  const { user, error, isLoading } = useUser();
   return (
-    <nav className="flex top-0 w-full h-[300px] bg-white grid grid-cols-3 grid-rows-1">
+    <nav className="flex top-0 w-full h-[100px] bg-white grid grid-cols-3 grid-rows-1">
       <div className="flex justify-center items-center p-4">
         <h1 className="text-black text-4xl">
           <span className="flex inline-flex items-center">
@@ -25,7 +27,9 @@ export default function Navbar() {
           className=""
         />
       </div>
-      <User />
+      <div className="flex justify-center items-center">
+        <User user={user} />
+      </div>
     </nav>
   );
 }
