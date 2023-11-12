@@ -4,12 +4,13 @@ export default async (req, res) => {
    try {
        const client = await clientPromise;
        const db = client.db("MinuteMingle");
-       const info = req.body
+       const info = req.body;
        const users = await db
-           .collection("LoginInfo")
-           .insertOne({ _username: info.username})
+           .collection("userinfos")
+           .find({"basicInfo.gender":info.gender})
+           .toArray();
 
-        res.status(200).end();
+        res.status(200).send(users);
    } catch (e) {
        console.error(e);
        res.status(400).end();
