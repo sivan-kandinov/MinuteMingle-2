@@ -63,8 +63,8 @@ export default function Home({
         />
       </div>
 
-      <div className="bg-gray-200">
-        <div className="mx-auto mt-10 w-1/2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="bg-gray-200 pt-5">
+        <div className="mx-auto w-1/2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <img
             src={picture}
             alt="picture of a person"
@@ -107,8 +107,7 @@ export default function Home({
           <div className="flex mb-4 justify-center">
             <a
               href="#"
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-center text-black bg-gray-200 rounded-lg hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-400 dark:text-white dark:bg-black dark:hover:bg-gray-500 dark:focus:ring-gray-600"
-            >
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-center text-white bg-[#881c1d] rounded-lg hover:bg-red-900 focus:ring-2 focus:outline-none focus:ring-gray-400">
               Become Study Buddies with Jeremy!
             </a>
           </div>
