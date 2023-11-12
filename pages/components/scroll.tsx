@@ -3,15 +3,15 @@ import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 export default function ScrollAreaItem({ classes }: { classes: string[] }) {
   return (
-    <ScrollArea.Root className="w-[200px] h-[225px] rounded overflow-hidden shadow-[0_2px_10px] shadow-blackA4 bg-black">
+    <ScrollArea.Root className="w-[200px] h-[225px] rounded overflow-hidden shadow-[0_2px_10px] shadow-lg shadow-black bg-gray-100">
       <ScrollArea.Viewport className="w-full h-full rounded">
         <div className="py-[15px] px-5">
-          <div className="text-violet11 text-[15px] leading-[18px] font-medium">
+          <div className="text-black text-[15px] leading-[18px] font-medium">
             Classes
           </div>
           {classes.map((c) => (
             <div
-              className="text-mauve12 text-[13px] leading-[18px] mt-2.5 pt-2.5 border-t border-t-mauve6"
+              className="text-black text-[13px] leading-[18px] mt-2.5 pt-2.5 border-t border-t-mauve6"
               key={c}
             >
               {c}

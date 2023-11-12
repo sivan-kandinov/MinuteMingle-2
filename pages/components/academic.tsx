@@ -26,14 +26,14 @@ export default function AcademicInformation({
   const classStyle = "font-bold mb-4";
 
   const classIcons = [
-    <BookCopy className={classStyle} />,
-    <Pencil className={classStyle} />,
-    <PencilLine className={classStyle} />,
-    <Pen className={classStyle} />,
-    <PencilRuler className={classStyle} />,
-    <PenSquare className={classStyle} />,
-    <BookOpenText className={classStyle} />,
-    <BookMarked className={classStyle} />,
+    <BookCopy className={classStyle} color="#000000" />,
+    <Pencil className={classStyle} color="#000000" />,
+    <PencilLine className={classStyle} color="#000000" />,
+    <Pen className={classStyle} color="#000000" />,
+    <PencilRuler className={classStyle} color="#000000" />,
+    <PenSquare className={classStyle} color="#000000" />,
+    <BookOpenText className={classStyle} color="#000000" />,
+    <BookMarked className={classStyle} color="#000000" />,
   ];
 
   useEffect(() => {
@@ -49,16 +49,16 @@ export default function AcademicInformation({
   return (
     <div className="flex flex-col mr-4">
       <div className="flex inline-flex mb-4">
-        <GraduationCap className="mr-2" />
-        <h2 className="text-2xl">
-          Academic {`${majors ? "Majors" : "Minors"}`}:
+        <GraduationCap color="#000000" className="mr-2" size={32}/>
+        <h2 className="text-2xl text-black">
+          Academic {`${majors ? "Major(s)" : "Minor(s)"}`}:
         </h2>
       </div>
       <div className="flex flex-col">
         {paths.map((path, i) => (
           <div className="flex flex-row inline-flex">
             {shuffled[i % numClassIcons]}
-            <h2 className="ml-2 text-2xl">{path}</h2>
+            <h2 className="ml-2 text-2xl text-black">{path}</h2>
           </div>
         ))}
       </div>
