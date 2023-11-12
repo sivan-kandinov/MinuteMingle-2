@@ -49,7 +49,9 @@ export default function Home({
                 {/* HAVE TO REPLACE WITH THE ACTUAL PERSON'S NAME */}
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Jeremy, 22</h5>
               </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Interests:</p>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Major(s):</p>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Minor(s):</p>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Courses:</p>
           </div>
         </div>
       </div>
