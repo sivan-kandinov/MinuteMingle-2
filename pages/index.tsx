@@ -37,10 +37,9 @@ export default function Home({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="bg-gray-200">
-      <Navbar/>
       <div className="mx-auto mt-10 w-1/2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a>
-        <img className="rounded-t-lg" src="/happy_guy.jpg" alt="" />
+        <img className="rounded-t-lg" src="/images/happy_guy.jpg" alt="" />
     </a>
     <div className="p-5">
         <a href="#">
