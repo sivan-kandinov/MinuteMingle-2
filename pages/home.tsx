@@ -50,12 +50,13 @@ export default function Home({
       const json = await res.json();
       setPerson(json);
       setLoading(false);
-      if (person.basicInfo.gender == "Male")
+  
+      // Check here after state is set
+      if (json && json.basicInfo && json.basicInfo.gender === "Male") {
         setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
-      else
-        setPicture(
-          femaleImages[Math.floor(Math.random() * femaleImages.length)]
-        );
+      } else {
+        setPicture(femaleImages[Math.floor(Math.random() * femaleImages.length)]);
+      }
     };
     fetchData();
   }, []);
