@@ -238,7 +238,7 @@ const MyForm = () => {
       </label>
       <br />
 
-      <label className="flex inline-flex mb-2">
+      <label className="inline-flex mb-2">
         <p className="mr-2">Phone Number:</p>
         <input
           type="tel"
@@ -327,8 +327,7 @@ const MyForm = () => {
       <button
         type="submit"
         className="bg-black text-white text-2xl px-[60px] py-[10px] rounded-md mx-[10px] cursor-pointer
-        hover:bg-white hover:text-black hover:border-black border-2 border-black transition-all duration-300"
-      >
+        hover:bg-white hover:text-black hover:border-black border-2 border-black transition-all duration-300">
         Submit
       </button>
     </form>
