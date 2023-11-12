@@ -65,8 +65,8 @@ export default function Profile() {
       </div>
       <div className="grid grid-cols-3">
         <div className="flex col-span-2">
-          <AcademicInformation paths={majors} />
-          <AcademicInformation paths={minors} />
+          <AcademicInformation paths={majors} majors={true} />
+          <AcademicInformation paths={minors} majors={false}/>
           
         </div>
         <div className="col-span-1"></div>

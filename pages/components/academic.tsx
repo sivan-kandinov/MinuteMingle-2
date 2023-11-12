@@ -13,7 +13,13 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export default function AcademicInformation({ paths }: { paths: string[] }) {
+export default function AcademicInformation({
+  paths,
+  majors,
+}: {
+  paths: string[];
+  majors: boolean;
+}) {
   const [shuffled, setShuffled] = useState<JSX.Element[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -44,7 +50,9 @@ export default function AcademicInformation({ paths }: { paths: string[] }) {
     <div className="flex flex-col mr-4">
       <div className="flex inline-flex mb-4">
         <GraduationCap className="mr-2" />
-        <h2 className="text-2xl">Academic Majors:</h2>
+        <h2 className="text-2xl">
+          Academic {`${majors ? "Majors" : "Minors"}`}:
+        </h2>
       </div>
       <div className="flex flex-col">
         {paths.map((path, i) => (
