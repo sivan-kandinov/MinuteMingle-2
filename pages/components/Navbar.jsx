@@ -4,7 +4,7 @@ import { Home } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="flex top-0 w-full h-[300px] bg-white grid grid-cols-3 grid-rows-1">
+    <nav className="flex top-0 w-full h-[100px] bg-white grid grid-cols-3 grid-rows-1">
       <div className="flex justify-center items-center p-4">
         <h1 className="text-black text-4xl">
           <span className="flex inline-flex items-center">
