@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import AcademicInformation from "./components/academic";
 import ScrollAreaItem from "./components/scroll";
+import React, { useState, useEffect } from "react";
 
 const getRandomInteger = (n: number) => {
   return Math.floor(Math.random() * n);
@@ -24,7 +25,7 @@ export default function Profile() {
   const lastName = "Billybob";
   const age = 20;
   const gender = "male";
-  const email = "johnbob@umass.edu";
+  const email = "jocelynBot";
   const phoneNumber = "(123)-456-7890";
   const onCampus = true;
   const residentialArea = "Honors College";
@@ -34,6 +35,25 @@ export default function Profile() {
   const year = "Junior";
   const interests = ["sports", "music", "food"];
   const bio = "I am a student at UMass Amherst";
+  const [matches, setMatches] = useState(null);
+
+  useEffect(()=>{{
+    fetch(
+      "http://localhost:3000/api/getMatches", {
+          method: "POST",
+          body: JSON.stringify({
+              "username" : email,
+          }),
+          headers: {
+            "Content-type": "application/json"
+          }
+      }
+  ).then((response) => 
+    response.json())
+  .then((data)=>{
+    setMatches(data.toString())
+  })
+  }})
 
   return (
     <main className="p-8 bg-black">
@@ -54,6 +74,9 @@ export default function Profile() {
               {phoneNumber}
             </a>
           </h3>
+          <h2 className="text-2xl font-bold mb-4">
+            Matches: {matches}
+          </h2>
         </div>
         <div className="col-span-2">
           <Image

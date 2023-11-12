@@ -11,7 +11,7 @@ export default async (req, res) => {
            .findOne({ sender: info.sender, receiver: info.receiver})
 
         if(match === null){
-            res.status(200).send({found:false})
+            res.status(200).json({found:false})
         }else{
             const contactInfo = await db.
             collection("userdatas")
@@ -33,7 +33,7 @@ export default async (req, res) => {
                 matchedUser.matches.push(info.sender)
                 db.collection("studyBuddies").updateOne({"user":info.receiver},{$set:{"matches":matchedUser.matches}})
             }
-            res.status(200).send({found:true, receiverInfo:contactInfo});
+            res.status(200).json({found:true, receiverInfo:contactInfo});
         }
    } catch (e) {
        console.error(e);
