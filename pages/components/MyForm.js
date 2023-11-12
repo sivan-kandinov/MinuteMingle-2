@@ -6,6 +6,7 @@ const MyForm = () => {
     intention: false,
     basicInfo: {
       firstName: "",
+      lastName: "",
       age: 0,
       gender: "",
     },
@@ -27,6 +28,7 @@ const MyForm = () => {
   const [formErrors, setFormErrors] = useState({
     basicInfo: {
       firstName: "",
+      lastName: "",
       age: "",
       gender: "",
     },
@@ -76,6 +78,13 @@ const MyForm = () => {
       validationErrors.basicInfo = {
         ...validationErrors.basicInfo,
         firstName: "Please enter your first name.",
+      };
+    }
+
+    if (!formData.basicInfo.lastName.trim()) {
+      validationErrors.basicInfo = {
+        ...validationErrors.basicInfo,
+        lastName: "Please enter your last name.",
       };
     }
 
@@ -173,6 +182,19 @@ const MyForm = () => {
           className="rounded-md"
         />
         <div style={{ color: "red" }}>{formErrors.basicInfo.firstName}</div>
+      </label>
+      <br />
+
+      <label className="flex inline-flex mb-2">
+        <p className="mr-2">Last Name:</p>
+        <input
+          type="text"
+          name="basicInfo.lastName"
+          value={formData.basicInfo.lastName}
+          onChange={handleChange}
+          className="rounded-md"
+        />
+        <div style={{ color: "red" }}>{formErrors.basicInfo.lastName}</div>
       </label>
       <br />
 

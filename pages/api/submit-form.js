@@ -9,6 +9,7 @@ mongoose.connect('mongodb+srv://MinuteMingle:MM@cluster0.kbdxhkp.mongodb.net/Min
 const formDataSchema = new mongoose.Schema({
   basicInfo: {
     firstName: String,
+    lastName: String,
     age: Number,
     gender: String,
   },
