@@ -1,5 +1,6 @@
-// components/MyForm.js
 import { useState } from "react";
+import React, { useEffect } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const MyForm = () => {
   const [formData, setFormData] = useState({
@@ -153,7 +154,7 @@ const MyForm = () => {
         });
 
         const data = await response.json();
-        window.location.href = "http://localhost:3000/";
+        window.location.href = "http://localhost:3000/home";
 
         if (data.success) {
           console.log("Form submitted successfully");
@@ -169,11 +170,36 @@ const MyForm = () => {
     }
   };
 
+  // const [matches, setMatches] = useState(null);
+  // const { user, error, isLoading } = useUser();
+  // useEffect(()=>{{
+  //   fetch(
+  //     "http://localhost:3000/api/getUserInfo", {
+  //         method: "POST",
+  //         body: JSON.stringify({
+  //             "username" : "lmdevine@umass.edu",
+  //         }),
+  //         headers: {
+  //           "Content-type": "application/json"
+  //         }
+  //     }
+  // ).then((response) => 
+  //   response.json())
+  // .then((data)=>{
+  //   console.log(data)
+  //   setMatches(data)
+  // })
+  // }})
+  // console.log(matches)
+  // if(matches != null){
+  //   window.location.href = "http://localhost:3000/home"
+  // }
+
   return (
     <form onSubmit={handleSubmit}>
       {/* Basic Information */}
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">First Name:</p>
+        <p className="mr-2 text-black">First Name:</p>
         <input
           type="text"
           name="basicInfo.firstName"
@@ -186,7 +212,7 @@ const MyForm = () => {
       <br />
 
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Last Name:</p>
+        <p className="mr-2 text-black">Last Name:</p>
         <input
           type="text"
           name="basicInfo.lastName"
@@ -199,7 +225,7 @@ const MyForm = () => {
       <br />
 
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Age:</p>
+        <p className="mr-2 text-black">Age:</p>
         <input
           type="number"
           name="basicInfo.age"
@@ -212,7 +238,7 @@ const MyForm = () => {
       <br />
 
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Gender:</p>
+        <p className="mr-2 text-black">Gender:</p>
         <input
           type="text"
           name="basicInfo.gender"
@@ -226,7 +252,7 @@ const MyForm = () => {
 
       {/* Contact Information */}
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Email:</p>
+        <p className="mr-2 text-black">Email:</p>
         <input
           type="email"
           name="contactInfo.email"
@@ -238,8 +264,8 @@ const MyForm = () => {
       </label>
       <br />
 
-      <label className="flex inline-flex mb-2">
-        <p className="mr-2">Phone Number:</p>
+      <label className="inline-flex mb-2">
+        <p className="mr-2 text-black">Phone Number:</p>
         <input
           type="tel"
           name="contactInfo.phoneNumber"
@@ -253,7 +279,7 @@ const MyForm = () => {
 
       {/* Location Information */}
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">On Campus:</p>
+        <p className="mr-2 text-black">On Campus:</p>
         <input
           type="checkbox"
           name="locationInfo.isOnCampus"
@@ -266,7 +292,7 @@ const MyForm = () => {
 
       {formData.locationInfo.isOnCampus && (
         <label className="flex inline-flex mb-2">
-          <p className="mr-2">Residential Area:</p>
+          <p className="mr-2 text-black">Residential Area:</p>
           <input
             type="text"
             name="locationInfo.residentialArea"
@@ -283,7 +309,7 @@ const MyForm = () => {
 
       {/* Academic Information */}
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Majors:</p>
+        <p className="mr-2 text-black">Majors:</p>
         <input
           type="text"
           name="academicInfo.majors"
@@ -296,7 +322,7 @@ const MyForm = () => {
       <br />
 
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Minors:</p>
+        <p className="mr-2 text-black">Minors:</p>
         <input
           type="text"
           name="academicInfo.minors"
@@ -309,7 +335,7 @@ const MyForm = () => {
       <br />
 
       <label className="flex inline-flex mb-2">
-        <p className="mr-2">Classes:</p>
+        <p className="mr-2 text-black">Classes:</p>
         <input
           type="text"
           name="academicInfo.classes"
@@ -327,8 +353,7 @@ const MyForm = () => {
       <button
         type="submit"
         className="bg-black text-white text-2xl px-[60px] py-[10px] rounded-md mx-[10px] cursor-pointer
-        hover:bg-white hover:text-black hover:border-black border-2 border-black transition-all duration-300"
-      >
+        hover:bg-white hover:text-black hover:border-black border-2 border-black transition-all duration-300">
         Submit
       </button>
     </form>
