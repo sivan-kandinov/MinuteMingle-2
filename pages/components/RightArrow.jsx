@@ -27,12 +27,14 @@ export default function RightArrow({ person, setPerson, setPicture }) {
     }, 500);
     setTimeout(() => {
       profilePic.style.opacity = 1;
-    }, 1000);
-    console.log(person.basicInfo.gender)
-    if (person.basicInfo.gender == "Male")
-      setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
-    else
-      setPicture(femaleImages[Math.floor(Math.random() * femaleImages.length)]);
+      if (person.basicInfo.gender == "Male")
+        setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
+      else
+        setPicture(
+          femaleImages[Math.floor(Math.random() * femaleImages.length)]
+        );
+    }, 750);
+    console.log(person.basicInfo.gender);
   };
   return (
     <button onClick={() => swipe()}>
