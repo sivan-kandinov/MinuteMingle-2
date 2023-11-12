@@ -1,8 +1,6 @@
-import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import RightArrow from './components/RightArrow'
-import Navbar from '../pages/components/Navbar.jsx';
 
 type ConnectionStatus = {
   isConnected: boolean
