@@ -50,9 +50,9 @@ export default function Home({
       const json = await res.json();
       setPerson(json);
       setLoading(false);
-      if (person.basicInfo.gender == "Male")
+      if (person && person.basicInfo.gender == "Male")
         setPicture(maleImages[Math.floor(Math.random() * maleImages.length)]);
-      else
+      else if (person && person.basicInfo.gender == "Female")
         setPicture(
           femaleImages[Math.floor(Math.random() * femaleImages.length)]
         );
