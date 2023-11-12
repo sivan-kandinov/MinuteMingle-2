@@ -9,7 +9,7 @@ export default async (req, res) => {
            .collection("userinfos")
            .findOne({"contactInfo.email":info.username})
 
-        res.status(200).send(user);
+        res.status(200).json(user);
    } catch (e) {
        console.error(e);
        res.status(400).end();
