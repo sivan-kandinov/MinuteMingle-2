@@ -18,12 +18,20 @@ export default async (req, res) => {
             .findOne({username:info.receiver})
 
             const currentUser = await db.collection("studyBuddies").findOne({user:info.sender})
+            const matchedUser = await db.collection("studyBuddies").findOne({user:info.receiver})
             console.log(currentUser)
             if(currentUser === null){
                 db.collection("studyBuddies").insertOne({user:info.sender,matches:[info.receiver]})
             }else{
                 currentUser.matches.push(info.receiver)
                 db.collection("studyBuddies").updateOne({"user":info.sender},{$set:{"matches":currentUser.matches}})
+            }
+
+            if(matchedUser === null){
+                db.collection("studyBuddies").insertOne({user:info.receiver,matches:[info.sender]})
+            }else{
+                matchedUser.matches.push(info.sender)
+                db.collection("studyBuddies").updateOne({"user":info.receiver},{$set:{"matches":matchedUser.matches}})
             }
             res.status(200).send({found:true, receiverInfo:contactInfo});
         }
