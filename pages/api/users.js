@@ -1,12 +1,12 @@
 import clientPromise from "../../lib/mongodb";
 
-export default async (req, res) => {
+export default async (_, res) => {
    try {
        const client = await clientPromise;
        const db = client.db("MinuteMingle");
 
        const users = await db
-           .collection("UserApplications")
+           .collection("userinfos")
            .find({})
            .limit(10)
            .toArray();
