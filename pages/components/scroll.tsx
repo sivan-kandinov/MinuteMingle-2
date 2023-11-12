@@ -7,7 +7,7 @@ export default function ScrollAreaItem({ classes }: { classes: string[] }) {
       <ScrollArea.Viewport className="w-full h-full rounded">
         <div className="py-[15px] px-5">
           <div className="text-violet11 text-[15px] leading-[18px] font-medium">
-            Tags
+            Classes
           </div>
           {classes.map((c) => (
             <div
