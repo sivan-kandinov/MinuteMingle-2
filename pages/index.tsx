@@ -37,8 +37,8 @@ export default function Home({
   isConnected,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <div>
-      <div className="absolute top-1/2 right-24">
+    <div className="relative w-full h-full">
+      <div className="absolute top-1/2 right-36">
         <RightArrow />
       </div>
       <div className="bg-gray-200">
