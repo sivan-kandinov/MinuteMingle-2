@@ -7,7 +7,5 @@ export default function landing() {
         <h1>Welcome!</h1>
         <button type="button" id="login-button"> Login </button>
       </div>
-
-      
     );
   }
