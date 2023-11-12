@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 const MyForm = () => {
+
   const [formData, setFormData] = useState({
     intention: false,
     basicInfo: {
@@ -21,13 +22,6 @@ const MyForm = () => {
       majors: '',
       minors: '',
       classes: '',
-    },
-    interestInfo: {
-      hobbies: '',
-      musicGenre: '',
-      movieGenre: '',
-      clubs: '',
-      favorites: '',
     },
   });
 
@@ -49,14 +43,7 @@ const MyForm = () => {
       majors: '',
       minors: '',
       classes: '',
-    },
-    interestInfo: {
-      hobbies: '',
-      musicGenre: '',
-      movieGenre: '',
-      clubs: '',
-      favorites: '',
-    },
+    }
   });
 
   const handleChange = (e) => {
@@ -81,6 +68,7 @@ const MyForm = () => {
     }
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -103,7 +91,7 @@ const MyForm = () => {
     if (!formData.basicInfo.gender) {
       validationErrors.basicInfo = {
         ...validationErrors.basicInfo,
-        gender: 'Please select your gender.',
+        gender: 'Please enter your gender.',
       };
     }
 
@@ -247,7 +235,7 @@ const MyForm = () => {
       </label>
       <br />
 
-      {formData.locationInfo.isOnCampus && (
+      
         <label>
           Residential Area:
           <input
@@ -256,9 +244,9 @@ const MyForm = () => {
             value={formData.locationInfo.residentialArea}
             onChange={handleChange}
           />
-          <div style={{ color: 'red' }}>{formErrors.locationInfo.residentialArea}</div>
+          <div style={{ color: 'red' }}>{formErrors.locationInfo?.residentialArea}</div>
         </label>
-      )}
+      
       <br />
 
       {/* Academic Information */}
