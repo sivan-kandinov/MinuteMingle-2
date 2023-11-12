@@ -6,6 +6,7 @@ import RightArrow from "./components/RightArrow";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { maleImages, femaleImages } from "../data/imagePaths";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 type ConnectionStatus = {
   isConnected: boolean;
@@ -42,6 +43,9 @@ export default function Home({
   const [person, setPerson] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [picture, setPicture] = useState<string>("/images/happy_guy.jpg");
+  const { user } = useUser();
+
+  console.log(user)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +63,23 @@ export default function Home({
     };
     fetchData();
   }, []);
+
+  let sendMatch = () => {
+    fetch("http://localhost:3000/api/addMatch", {
+      method: "POST",
+      body: JSON.stringify({
+        sender: "jocelynBot",
+        receiver:person.contactInfo.email,
+        senderInfo:"stuff",
+        receiverInfo:"stuff"
+
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+    alert("You sent a match")
+  }
 
   return (
     <div className="relative w-full h-full">
@@ -118,6 +139,7 @@ export default function Home({
             <a
               href="#"
               className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-center text-black bg-gray-200 rounded-lg hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-400 dark:text-white dark:bg-black dark:hover:bg-gray-500 dark:focus:ring-gray-600"
+              onClick={sendMatch}
             >
               Become Study Buddies with {person && person.basicInfo.firstName}!
             </a>
