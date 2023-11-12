@@ -21,14 +21,7 @@ const MyForm = () => {
       majors: '',
       minors: '',
       classes: '',
-    },
-    interestInfo: {
-      hobbies: '',
-      musicGenre: '',
-      movieGenre: '',
-      clubs: '',
-      favorites: '',
-    },
+    }
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -49,14 +42,7 @@ const MyForm = () => {
       majors: '',
       minors: '',
       classes: '',
-    },
-    interestInfo: {
-      hobbies: '',
-      musicGenre: '',
-      movieGenre: '',
-      clubs: '',
-      favorites: '',
-    },
+    }
   });
 
   const handleChange = (e) => {
