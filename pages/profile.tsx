@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import AcademicInformation from "./components/academic";
+import ScrollAreaItem from "./components/scroll";
 
 const getRandomInteger = (n: number) => {
   return Math.floor(Math.random() * n);
@@ -29,6 +30,7 @@ export default function Profile() {
   const residentialArea = "Honors College";
   const majors = ["Computer Science", "Informatics"];
   const minors = ["Philosophy", "Mathematics"];
+  const classes = ["CS 220", "CS 230", "CS 240", "CS 250", "CS 311", "Phil 100", "Phil 180"]
   const year = "Junior";
   const interests = ["sports", "music", "food"];
   const bio = "I am a student at UMass Amherst";
@@ -69,7 +71,9 @@ export default function Profile() {
           <AcademicInformation paths={minors} majors={false}/>
           
         </div>
-        <div className="col-span-1"></div>
+        <div className="flex col-span-1">
+          <ScrollAreaItem classes={classes}/>
+        </div>
       </div>
     </main>
   );
