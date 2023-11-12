@@ -140,6 +140,25 @@ const MyForm = () => {
       };
     }
 
+    async function getInfo(){
+      let response = await fetch(
+        "http://localhost:3000/getUserInfo",{
+          method: "POST",
+          body: JSON.stringify({
+            username: email
+          }),
+          headers:{
+            "Content-type": "application/json"
+          }
+        }
+      )
+      return await response.json();
+    }
+    console.log(getInfo());
+    if (getInfo()!==null){
+      window.location.href = "http://localhost:3000/home";
+    }
+
     if (Object.keys(validationErrors).length > 0) {
       setFormErrors(validationErrors);
     } else {
@@ -153,7 +172,7 @@ const MyForm = () => {
         });
 
         const data = await response.json();
-        window.location.href = "http://localhost:3000/";
+        window.location.href = "http://localhost:3000/home";
 
         if (data.success) {
           console.log("Form submitted successfully");

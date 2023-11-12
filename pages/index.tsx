@@ -3,8 +3,6 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function landing() {
   const { user, error, isLoading } = useUser();
-  console.log("hello")
-  console.log(user)
   useEffect(()=> {
     //redirect func
     console.log(user)
@@ -13,7 +11,6 @@ export default function landing() {
     }
   }, [user])
   return (
-      
       <div style={{fontSize:'100px', textAlign:'center'}}>
         <h1>Welcome!</h1>
         <a href="/api/auth/login" type="onClick">
