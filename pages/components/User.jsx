@@ -36,20 +36,20 @@ export default function User({ user }) {
           sideOffset={5}
         >
           <div className="flex flex-col gap-2.5">
-            <p className="text-mauve12 text-[15px] leading-[19px] font-medium mb-2.5">
+            <p className="text-white text-[15px] leading-[19px] font-medium mb-2.5">
               {user ? user.name : "No user"}
             </p>
             {user ? (
               <a
                 href="/api/auth/logout"
-                className="text-violet11 text-[15px] leading-[19px] font-medium hover:underline"
+                className="text-white text-[15px] leading-[19px] font-medium hover:underline"
               >
                 Logout
               </a>
             ) : (
               <a
                 href="/api/auth/login"
-                className="text-violet11 text-[15px] leading-[19px] font-medium hover:underline"
+                className="text-white text-[15px] leading-[19px] font-medium hover:underline"
               >
                 Login
               </a>
