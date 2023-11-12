@@ -1,18 +1,17 @@
 import clientPromise from "../../lib/mongodb";
 
-export default async (_, res) => {
+export default async (req, res) => {
    try {
        const client = await clientPromise;
        const db = client.db("MinuteMingle");
-
-       const users = await db
+       const info = req.body;
+       const user = await db
            .collection("userinfos")
-           .find({})
-           .limit(10)
-           .toArray();
+           .findOne({"contactInfo.email":info.username})
 
-       res.json(users);
+        res.status(200).send(user);
    } catch (e) {
        console.error(e);
+       res.status(400).end();
    }
 };
