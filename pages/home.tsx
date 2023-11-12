@@ -55,7 +55,7 @@ export default function Home({
 
   return (
     <div className="relative w-full h-full">
-      <div className="absolute top-1/2 right-[10%]">
+      <div className="absolute top-1/2 -translate-y-[50%] right-[10%]">
         <RightArrow
           person={person}
           setPerson={setPerson}
